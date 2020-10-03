@@ -1,3 +1,12 @@
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.header {
+  float: left;
+  padding-left: 10px;
+}
+
 .toolbar {
   padding: 8px;
 }
@@ -5,6 +14,10 @@
 .toolbar > * {
   float: right;
   margin-left: 8px;
+}
+
+.toolbar span {
+  padding-top: 14px;
 }
 
 audio {
