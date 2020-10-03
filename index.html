@@ -22,8 +22,8 @@
 </div>
 
 <div class="toolbar">
-  <a class="btn btn-lg btn-default btn-success" onClick="toggleColor();switchToRoom('as220-' + this.innerText);">Doorstep</a>
-  <a class="btn btn-lg btn-default" onClick="toggleColor();switchToRoom('as220-' + this.innerText);">Printshop</a>
+  <a class="btn btn-lg btn-default btn-success" onClick="toggleColor(this);switchToRoom('as220-' + this.innerText);">Doorstep</a>
+  <a class="btn btn-lg btn-default" onClick="toggleColor(this);switchToRoom('as220-' + this.innerText);">Printshop</a>
   <span>Choose a room to hear audio:</span>
 </div>
 
@@ -32,9 +32,9 @@
 </div>
 
 <script>
-function toggleColor() {
+function toggleColor(el) {
   $('.toolbar a.btn').removeClass('btn-success');
-  $(this).addClass('btn-success');
+  $(el).addClass('btn-success');
 }
 </script>
 </body>
