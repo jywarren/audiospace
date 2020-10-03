@@ -3,8 +3,6 @@
 var connection = new RTCMultiConnection();
 var roomId = 'as220-Doorstep';
 
-connection.openOrJoin(roomId);
-
 // Config
 
 // this line is VERY_important
@@ -36,6 +34,10 @@ connection.iceServers = [{
     'stun:stun.l.google.com:19302?transport=udp',
   ]
 }];
+
+// Initialize
+
+connection.openOrJoin(roomId);
 
 // Utilities
 
