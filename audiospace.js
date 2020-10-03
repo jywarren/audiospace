@@ -1,4 +1,10 @@
 // working from https://www.rtcmulticonnection.org/docs/getting-started/
+/*
+TODO:
+* toggle area button using entryArea property
+* begin managing UI logic like buttons, using events like onEnterRoom
+
+*/
 
 var connection = new RTCMultiConnection();
 var roomId = 'as220-Doorstep';
@@ -43,9 +49,23 @@ connection.openOrJoin(roomId);
 
 // dingdong event connection.onNewParticipant
 
+let rooms = {
+  Doorstep: {
+    entryArea: 'Left'
+  },
+  Printshop: {
+    entryArea: 'Left'
+  } 
+}
+
 function switchToRoom(newRoomId) {
   leaveRoom();
   connection.openOrJoin(newRoomId);
+  if (rooms[newRoomId] && rooms[newRoomId].entryArea) {
+    goToArea(rooms[newRoomId].entryArea);
+  } else {
+    goToArea(false); // remove "area"
+  }
 }
 
 // disconnects from all current peers
@@ -62,7 +82,7 @@ function setVolume(peer, volume) {
 }
 
 // return all peers to volume 1 (100%)
-function loudenAllPeers(areaId) {
+function loudenAllPeers() {
   connection.peers.getAllParticipants().forEach(function(peer) {
     setVolume(peer, 1);
   });
@@ -94,7 +114,7 @@ function getDistantPeers(areaId) {
 }
 
 // set areaId; set to false for no area
-function goTo(areaId) {
+function goToArea(areaId) {
   connection.extra.area = areaId;
   connection.updateExtraData();
 }

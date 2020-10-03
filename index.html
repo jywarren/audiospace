@@ -22,9 +22,15 @@
 </div>
 
 <div class="toolbar">
-  <a class="btn btn-lg btn-default btn-success" onClick="toggleColor(this);switchToRoom('as220-' + this.innerText);">Doorstep</a>
-  <a class="btn btn-lg btn-default" onClick="toggleColor(this);switchToRoom('as220-' + this.innerText);">Printshop</a>
-  <span>Choose a room to hear audio:</span>
+  <span class="areas btn-group" role="group" aria-label="Areas">
+    <a class="btn btn-lg btn-default" onClick="toggleColor(this,'.areas');goToArea(this.innerText);">Left</a>
+    <a class="btn btn-lg btn-default" onClick="toggleColor(this,'.areas');goToArea(this.innerText);">Right</a>
+  </span>
+  <span class="rooms btn-group" role="group" aria-label="Rooms">
+    <a class="btn btn-lg btn-default btn-success" onClick="toggleColor(this);switchToRoom('as220-' + this.innerText);">Doorstep</a>
+    <a class="btn btn-lg btn-default" onClick="toggleColor(this);switchToRoom('as220-' + this.innerText);">Printshop</a>
+  </span>
+  <span class="explanation">Choose a room and area to hear audio:</span>
 </div>
 
 <div class="iframe-wrapper">
@@ -32,8 +38,9 @@
 </div>
 
 <script>
-function toggleColor(el) {
-  $('.toolbar a.btn').removeClass('btn-success');
+function toggleColor(el, type) {
+  type = type || '.rooms';
+  $('.toolbar ' + type + ' a.btn').removeClass('btn-success');
   $(el).addClass('btn-success');
 }
 </script>
