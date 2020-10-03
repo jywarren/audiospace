@@ -41,12 +41,6 @@ connection.openOrJoin(roomId);
 
 // Utilities
 
-// set volume of one peer
-function setAudio(volume) {
-  let streamid = connection.peers.selectFirst().streams[0].streamid;
-  $('#' + streamid)[0].volume = volume;
-}
-
 // dingdong event connection.onNewParticipant
 
 function switchToRoom(newRoomId) {
@@ -60,3 +54,48 @@ function leaveRoom() {
     connection.disconnectWith( participantId );
   });
 }
+
+// set volume of one peer
+function setVolume(peer, volume) {
+  let streamid = peer.streams[0].streamid;
+  $('#' + streamid)[0].volume = volume;
+}
+
+// return all peers to volume 1 (100%)
+function loudenAllPeers(areaId) {
+  connection.peers.getAllParticipants().forEach(function(peer) {
+    setVolume(peer, 1);
+  });
+}
+
+// set peers who don't share areaId to volume 50%
+function quietDistantPeers(areaId) {
+  let peers = getDistantPeers(areaId);
+  peers.forEach(function(peer) {
+    setVolume(peer, 0.5);
+  });
+}
+
+// collect peers with same areaId
+function getNearbyPeers(areaId) {
+  let near = [];
+  connection.peers.getAllParticipants().forEach(function(peer) {
+    if (peer.extra.area == areaId) near.push(peer);
+  });
+  return peers;
+}
+
+function getDistantPeers(areaId) {
+  let far = [];
+  connection.peers.getAllParticipants().forEach(function(peer) {
+    if (peer.extra.area != areaId) far.push(peer);
+  });
+  return peers;
+}
+
+// set areaId; set to false for no area
+function goTo(areaId) {
+  connection.extra.area = areaId;
+  connection.updateExtraData();
+}
+
