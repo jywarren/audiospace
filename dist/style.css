@@ -1,0 +1,28 @@
+.toolbar {
+  padding: 8px;
+}
+
+.toolbar > * {
+  float: right;
+  margin-left: 8px;
+}
+
+audio {
+/*
+  display: none;
+*/
+}
+
+iframe {
+  border: none;
+  position:absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  margin: 0px;
+}
+
+.iframe-wrapper {
+  padding: -20px;
+}
