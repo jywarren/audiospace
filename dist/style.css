@@ -10,20 +10,20 @@ body {
 .toolbar {
   padding: 8px;
 }
-
-.toolbar > * {
+.toolbar > span {
   float: right;
+}
+.toolbar span.btn-group {
+  padding-top: 4px;
   margin-left: 8px;
 }
-
-.toolbar span {
-  padding-top: 14px;
+.toolbar span.explanation {
+  margin-left: 8px;
+  padding-top: 20px;
 }
 
 audio {
-/*
   display: none;
-*/
 }
 
 iframe {

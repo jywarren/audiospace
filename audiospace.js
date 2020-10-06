@@ -1,9 +1,13 @@
 // working from https://www.rtcmulticonnection.org/docs/getting-started/
+/*
+TODO:
+* toggle area button using entryArea property
+* begin managing UI logic like buttons, using events like onEnterRoom
+
+*/
 
 var connection = new RTCMultiConnection();
 var roomId = 'as220-Doorstep';
-
-connection.openOrJoin(roomId);
 
 // Config
 
@@ -37,19 +41,31 @@ connection.iceServers = [{
   ]
 }];
 
+// Initialize
+
+connection.openOrJoin(roomId);
+
 // Utilities
 
-// set volume of one peer
-function setAudio(volume) {
-  let streamid = connection.peers.selectFirst().streams[0].streamid;
-  $('#' + streamid)[0].volume = volume;
-}
-
 // dingdong event connection.onNewParticipant
+
+let rooms = {
+  Doorstep: {
+    entryArea: 'Left'
+  },
+  Printshop: {
+    entryArea: 'Left'
+  } 
+}
 
 function switchToRoom(newRoomId) {
   leaveRoom();
   connection.openOrJoin(newRoomId);
+  if (rooms[newRoomId] && rooms[newRoomId].entryArea) {
+    goToArea(rooms[newRoomId].entryArea);
+  } else {
+    goToArea(false); // remove "area"
+  }
 }
 
 // disconnects from all current peers
@@ -58,3 +74,48 @@ function leaveRoom() {
     connection.disconnectWith( participantId );
   });
 }
+
+// set volume of one peer
+function setVolume(peer, volume) {
+  let streamid = peer.streams[0].streamid;
+  $('#' + streamid)[0].volume = volume;
+}
+
+// return all peers to volume 1 (100%)
+function loudenAllPeers() {
+  connection.peers.getAllParticipants().forEach(function(peer) {
+    setVolume(peer, 1);
+  });
+}
+
+// set peers who don't share areaId to volume 50%
+function quietDistantPeers(areaId) {
+  let peers = getDistantPeers(areaId);
+  peers.forEach(function(peer) {
+    setVolume(peer, 0.5);
+  });
+}
+
+// collect peers with same areaId
+function getNearbyPeers(areaId) {
+  let near = [];
+  connection.peers.getAllParticipants().forEach(function(peer) {
+    if (peer.extra.area == areaId) near.push(peer);
+  });
+  return peers;
+}
+
+function getDistantPeers(areaId) {
+  let far = [];
+  connection.peers.getAllParticipants().forEach(function(peer) {
+    if (peer.extra.area != areaId) far.push(peer);
+  });
+  return peers;
+}
+
+// set areaId; set to false for no area
+function goToArea(areaId) {
+  connection.extra.area = areaId;
+  connection.updateExtraData();
+}
+
