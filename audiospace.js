@@ -99,18 +99,18 @@ function quietDistantPeers(areaId) {
 // collect peers with same areaId
 function getNearbyPeers(areaId) {
   let near = [];
-  connection.peers.getAllParticipants().forEach(function(peer) {
-    if (peer.extra.area == areaId) near.push(peer);
+  connection.peers.forEach(function(peer) {
+    if (peer.extra.hasOwnProperty('area') && peer.extra.area == areaId) near.push(peer);
   });
-  return peers;
+  return near;
 }
 
 function getDistantPeers(areaId) {
   let far = [];
-  connection.peers.getAllParticipants().forEach(function(peer) {
+  connection.peers.forEach(function(peer) {
     if (peer.extra.area != areaId) far.push(peer);
   });
-  return peers;
+  return far;
 }
 
 // set areaId; set to false for no area
