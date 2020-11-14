@@ -6,9 +6,9 @@ beforeAll(async () => {
 });
 
 describe('Initialize library', () => {
-  test('using the constructor', {
+  test('using the constructor', () => {
 
-    var audiospace = new Audiospace({
+    let audiospace = new Audiospace({
 
     });
 
