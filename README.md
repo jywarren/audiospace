@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jywarren/audiospace)
+
 # audiospace
 
 A library for managing multiple audio chatrooms, as well as spatialized sound management among participants. For example, smoothly move between multiple audio chatrooms without terrible microphone crosstalk, or hear fellow participants who are in "the same corner" of a room, while still hearing the quieter background noise of other "further away" participants speaking.
