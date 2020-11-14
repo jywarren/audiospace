@@ -9,3 +9,22 @@ It has 2 rooms and also 2 "areas" in each room... at first you hear everyone in 
 I also want to add a mode where it's truly spatialized so that it could be used as the audio system for other projects. I want to make it read a layout of rooms and areas from a JSON config file. 
 
 More soon!
+
+## Usage
+
+### Initialize
+
+```js
+let audiospace = new Audiospace({
+  roomId: "cozy-hangout",
+  rooms: {
+    Doorstep: {
+      entryArea: 'Left'
+    },
+    Printshop: {
+      entryArea: 'Left'
+    }
+  }
+});
+```
+
