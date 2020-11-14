@@ -4,3 +4,6 @@ tasks:
 ports:
   - port: 8080
     onOpen: open-preview
+
+tasks:
+  - command: chromium-browser --no-sandbox
