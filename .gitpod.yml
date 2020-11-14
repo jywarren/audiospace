@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm install
+  - init: npm install && export CHROME_BIN=/usr/bin/chromium-browser
     command: node_modules/http-server/bin/http-server
 ports:
   - port: 8080
