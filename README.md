@@ -17,7 +17,7 @@ More soon!
 ### Initialize
 
 ```js
-let audiospace = new Audiospace({
+let audiospace = Audiospace({
   roomId: "cozy-hangout",
   rooms: {
     Doorstep: {
