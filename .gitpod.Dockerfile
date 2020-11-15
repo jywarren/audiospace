@@ -3,6 +3,16 @@ FROM gitpod/workspace-full
 
 RUN sudo apt-get update && \
     sudo apt-get install -y \
+        x11-apps \
+        libice6 \
+        libsm6 \
+        libxaw7 \
+        libxft2 \
+        libxmu6 \
+        libxpm4 \
+        libxt6 \
+        x11-apps \
+        xbitmaps \
         ca-certificates \
         fonts-liberation \
         libappindicator3-1 \
