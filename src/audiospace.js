@@ -5,7 +5,7 @@ TODO:
 * begin managing UI logic like buttons, using events like onEnterRoom
 */
 
-module.exports = Audiospace = function constructor(o) {
+Audiospace = function constructor(o) {
 
   o.connection = require('./connection.js')({
     roomId: o.roomId || 'as220-Doorstep'
@@ -96,3 +96,5 @@ module.exports = Audiospace = function constructor(o) {
   };
   return publicApi;
 }
+
+module.exports = Audiospace;
