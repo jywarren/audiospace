@@ -5,7 +5,7 @@ module.exports = {
     devtools: true
   },
   server: {
-    command: 'http-server',
+    command: 'http-server --ssl',
     port: 8080,
   },
 } 
