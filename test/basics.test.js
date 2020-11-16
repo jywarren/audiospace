@@ -8,6 +8,8 @@ beforeAll(async () => {
 describe('Initialize library', () => {
   test('using the constructor', () => {
 
+    console.log("SYNC", document.body.innerHTML); // debug
+
     let audiospace = Audiospace({
 
     });
@@ -16,7 +18,17 @@ describe('Initialize library', () => {
 
   });
 
-  //test('using the constructor', async () => {
-  //}, timeout);
+  // async example:
+  test('using the constructor', async () => {
+
+    console.log("ASYNC", document.body.innerHTML); // debug
+
+    let audiospace = Audiospace({
+
+    });
+
+    expect(audiospace).not.toBeNull();
+
+  }, timeout);
 
 });
