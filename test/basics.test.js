@@ -5,7 +5,8 @@
 const timeout = process.env.SLOWMO ? 60000 : 10000;
 const fs = require('fs');
 beforeAll(async () => {
-  path = fs.realpathSync('file://../index.html');
+  let page = await global.__BROWSER__.newPage();
+  let path = fs.realpathSync('file://../index.html');
   await page.goto('file://' + path, {waitUntil: 'domcontentloaded'});
 });
 
