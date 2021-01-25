@@ -121,7 +121,7 @@ module.exports = function connection(o) {
   };
 
   connection.sdpConstraints = o.sdpConstraints || {};
-  connection.sdpConstraints.mandatory = o.sdpConstraints.mandatory || {
+  connection.sdpConstraints.mandatory = connection.sdpConstraints.mandatory || {
     OfferToReceiveAudio: true,
     OfferToReceiveVideo: false
   };
