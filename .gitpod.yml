@@ -3,10 +3,19 @@ image:
 
 tasks:
   - init: npm install && export CHROME_BIN=/usr/bin/chromium-browser
-    command: node_modules/http-server/bin/http-server
+    command: node_modules/http-server/bin/http-server    
+  - command: chromium-browser --no-sandbox
+
 ports:
   - port: 8080
     onOpen: open-preview
-
-tasks:	
-  - command: chromium-browser --no-sandbox 
+  
+github:
+    prebuilds:
+        branches: true
+        pullRequests: true
+        pullRequestsFromForks: true
+        addCheck: true
+        addComment: true
+        addBadge: false
+        addLabel: false
