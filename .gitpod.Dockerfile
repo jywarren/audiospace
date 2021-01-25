@@ -49,5 +49,6 @@ RUN sudo apt-get update && \
         libxtst6 \
         lsb-release \
         wget \
-        xdg-utils && \
+        xdg-utils \
+        xvfb && \
     sudo rm -rf /var/lib/apt/lists/*
