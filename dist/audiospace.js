@@ -139,6 +139,6 @@ module.exports = function connection(o) {
 
   // Initialize
 
-  connection.openOrJoin(roomId);
+  connection.openOrJoin(o.roomId);
 }
 },{}]},{},[1]);
