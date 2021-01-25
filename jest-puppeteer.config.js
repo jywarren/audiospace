@@ -1,0 +1,13 @@
+module.exports = {
+  launch: {
+    headless: process.env.HEADLESS !== 'false',
+    slowMo: process.env.SLOWMO ? process.env.SLOWMO : 0,
+    ignoreHTTPSErrors: true, // https://github.com/puppeteer/puppeteer/issues/1137#issuecomment-515821727
+    args: ['--no-sandbox', '--disable-setuid-sandbox'], // https://github.com/puppeteer/puppeteer/blob/main/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
+    devtools: true
+  },
+  server: {
+    command: 'http-server --ssl',
+    port: 8080,
+  },
+} 
